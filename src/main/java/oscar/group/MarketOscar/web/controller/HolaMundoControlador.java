@@ -11,6 +11,6 @@ public class HolaMundoControlador {
      @GetMapping("/hope")
     public String primeralinea()
     {
-        return "primer pipeline cambiuo";
+        return "primerss pipeline cambiuo";
     }
 }
