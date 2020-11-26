@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/primeralinea")
+@RequestMapping("/primeralineas")
 
 public class sonarCloudCambios {
 
-    @GetMapping("/hope")
+    @GetMapping("/ho")
     public String primeralineass()
     {
         return "primerss pipeline cambiuo";
     }
 
-    @GetMapping("/hopes")
+    @GetMapping("/hoi")
     public String primeralinea21()
     {
         return "primss pipeline cambiuo";
