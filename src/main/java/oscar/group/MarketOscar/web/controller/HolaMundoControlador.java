@@ -13,4 +13,14 @@ public class HolaMundoControlador {
     {
         return "primerss pipeline cambiuo";
     }
+
+    @GetMapping("/hopes")
+    public String primeralinea21()
+    {
+        return "primss pipeline cambiuo";
+    }
+
+
 }
+
+
