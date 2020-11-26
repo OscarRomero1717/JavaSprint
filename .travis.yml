@@ -24,6 +24,10 @@ stage:
 
 install: skip
 
+addons:
+  sonarcloud:
+    organization: "oscarromero1717"
+
 jobs:
   include:
     - stage: dev
@@ -31,7 +35,8 @@ jobs:
       script:
         - ./gradlew build
         - ./gradlew build test
-        - echo "I want to evaluate static quality code"
+        - ./gradlew sonarqube
 
     - script: echo "I want to deploy to heroku"
       name: "deploy"
+
