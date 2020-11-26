@@ -34,7 +34,7 @@ jobs:
       name: "build & unit test & sonar qube"
       script:
         - ./gradlew build
-        - ./gradlew build test
+        - ./gradlew  test
         - ./gradlew sonarqube
 
     - script: echo "I want to deploy to heroku"
