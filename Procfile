@@ -1,1 +1,1 @@
-web: java -jar -Dspring.profiles.active=pdn build/libs/MarketOscar-0.0.1.jar
+web: java -jar -Dserver.port=$PORT build/libs/MarketOscar-0.0.1.jar
