@@ -1,42 +1,37 @@
 anguage: java
-
 jdk: openjdk11
-
 before_install:
-  - chmod +x gradlew
-  - wget https://services.gradle.org/distributions/gradle-6.0-bin.zip
-  - unzip -qq gradle-6.0-bin.zip
-  - export GRADLE_HOME=$PWD/gradle-6.0
-  - export PATH=$GRADLE_HOME/bin:$PATH
-  - gradle -v
-
+- chmod +x gradlew
+- wget https://services.gradle.org/distributions/gradle-6.0-bin.zip
+- unzip -qq gradle-6.0-bin.zip
+- export GRADLE_HOME=$PWD/gradle-6.0
+- export PATH=$GRADLE_HOME/bin:$PATH
+- gradle -v
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 stage:
-  - dev
-  - prod
-
+- dev
+- prod
 install: skip
-
 addons:
   sonarcloud:
-    organization: "oscarromero1717"
-
+    organization: oscarromero1717
 jobs:
   include:
-    - stage: dev
-      name: "build & unit test & sonar qube"
-      script:
-        - ./gradlew build
-        - ./gradlew  test
-        - ./gradlew sonarqube
-
-    - script: echo "I want to deploy to heroku"
-      name: "deploy"
+  - stage: dev
+    name: build & unit test & sonar qube
+    script:
+    - "./gradlew build"
+    - "./gradlew  test"
+    - "./gradlew sonarqube"
+deploy:
+  provider: heroku
+  api_key:
+    secure: Vi6C6urvNhGtKkRE2WUvTqry5YxIbvOecycFLZrOlDor0Z4klrq57IEteaLiFfpu4ipzqrKLmtCzRCemk5+EaDkZuqQxXElSsWFfJQ5wQ38KqKK3fG4Bi2+P0FzFvn+PeOrAayPjyokwKcAzsiuFlMtQuqNYN5JDh4Xw/xoS9Vse/Gxu0mYivbm1bEP2cAFmHoS5fq3wZ+tXPXRqy5HN4wT87VQ/4le+hdo6shf6yWmB4kPVoHuedvjgGWXK934NXyhjkpRRgkJJWM1hWvczwsa+y/cETfnIBY9UZFD64kRTuSbu/pYE0wamdSS7SF7h+Ebojb2hayVs53M4IYzuaIYDi0Kt0ez8/O1ZWdgOCE8hhZD6nsleBYFAcMGomH8Lj9daHg/1rEMbCkYjr9C/6vqFfweO5rehwz0SyMb4gCWp+oTYmnjR5m0ENtrIPm7ruf6tqcgrKnbJhDuL7CaAxfTOatToxcCVbOFq5I0/Ubyuuq5QeldAtCX7vfkmY3a8nzBtQLGYvm06bwwlTYawARLueckSGm9EL5HBRSJnM0wdgCLH1CHsEhlIFPotUadvHpDQ4FbZbfQ9WnYPu4LLNwRC74tqPi70KlyNU2TBoWhbElGaPhLbEFfaQfPO/QO6mE0YysLgrkxOmQXBSnFNQR9ALi2HTrD6rIqXNFV8S/0=
+  app: marketoscar
 
